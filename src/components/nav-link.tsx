@@ -6,7 +6,7 @@ interface PropsNavLink extends ComponentProps<'a'> {
 
 export function NavLink (props: PropsNavLink) {
   return (
-    <a {...props} className='font-medium text-sm transition duration-500 hover:text-orange-500 selection:text-orange-500'>
+    <a {...props} className='font-medium text-[10px] md:text-sm transition duration-500 hover:text-orange-500 selection:text-orange-500'>
       {props.children}
     </a>
   )

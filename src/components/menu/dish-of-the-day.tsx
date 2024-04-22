@@ -1,7 +1,7 @@
 export function DishOfTheDay () {
   return (
-    <div className="ml-6 pt-40">
-      <h2 className="text-[17px] font-semibold mb-6 border-b border-white/10 w-[950px] pb-2">Pratos do dia</h2>
+    <div className="ml-6 pt-36 md:pt-40">
+      <h2 className="text-[17px] font-semibold mb-6 border-b border-white/10 w-[378px] md:w-[950px] flex justify-center md:justify-start pb-2">Pratos do dia</h2>
 
         <div className="pb-8">
           <h3 className="text-[14px] opacity-50 pb-3">Virado à Paulista - Segunda-feira</h3>
@@ -28,7 +28,7 @@ export function DishOfTheDay () {
             <p className="">A partir de: R$ 00,00</p>
         </div>
 
-        <div className="border-b border-white/10 w-[950px] pb-3">
+        <div className="border-b border-white/10 w-[378px] md:w-[950px] pb-3">
           <h3 className="text-[14px] opacity-50 pb-3">Feijoada - Sábado</h3>
             <p className="">A partir de: R$ 00,00</p>
         </div>
