@@ -7,8 +7,8 @@ export function Footer () {
         <img src={Icon} alt="Logo" className='size-36 2xl:size-48'/>
         <div>
           <h3 className="font-bold md:text-xl 2xl:text-3xl">Silvestre Lanchonete</h3>
-          <p className='text-sm md:text-lg 2xl:text-2xl pt-3 md:pt-5 2xl:pt-6'>Cardápio</p>
-          <p className='text-sm md:text-lg 2xl:text-2xl pt-3 md:pt-5 2xl:pt-6'>Software 2024 - Todos os direitos reservados.</p>
+          <p className='text-sm md:text-base xl:text-lg 2xl:text-2xl pt-3 md:pt-5 2xl:pt-6'>Cardápio</p>
+          <p className='text-sm md:text-base xl:text-lg 2xl:text-2xl pt-3 md:pt-5 2xl:pt-6'>Software 2024 - Todos os direitos reservados.</p>
         </div>
       </div>
     </div>
