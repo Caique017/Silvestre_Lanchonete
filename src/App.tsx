@@ -8,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Separator } from './components/ui/separator';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Toaster, toast } from 'sonner';
 
 interface menuProps {
@@ -178,14 +178,18 @@ function scrollToSection(sectionId: string) {
       </div>
       <div className='flex items-center py-3'>
       <nav className='flex items-center gap-3 md:gap-5 xl:gap-7 2xl:gap-10'>
-            {dishes
-              .filter((dish) => dish.nameSection !== null)
-              .map((dish) => (
-                <NavLink key={dish.id} href={`#${dish.nameSection.replace(/\s+/g, '-').toLowerCase()}`} onClick={handleNavLinkClick}>
-                  {dish.nameSection}
-                </NavLink>
-              ))}
-          </nav>
+  {dishes
+    .filter((dish) => dish.nameSection !== null)
+    .map((dish) => (
+      <Fragment key={dish.id}>
+        {dish.nameSection && (
+          <NavLink href={`#${dish.nameSection.replace(/\s+/g, '-').toLowerCase()}`} onClick={handleNavLinkClick}>
+            {dish.nameSection}
+          </NavLink>
+        )}
+      </Fragment>
+    ))}
+</nav>
       </div>
     </div>
 
