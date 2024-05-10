@@ -19,7 +19,6 @@ interface menuProps {
 }
 
 export function App() {
-
   const [searchText, setSearchText] = useState('');
 
   const [selectedDishes, setSelectedDishes] = useState<menuProps[]>([]);
@@ -41,6 +40,30 @@ export function App() {
   function generateRandomPrice() {
     return (Math.random() * (50 - 10) + 10).toFixed(2); // Gera um valor aleatório entre 10.00 e 50.00
   }
+
+  function handleNavLinkClick(e: React.MouseEvent<HTMLAnchorElement>) {
+    e.preventDefault(); // Impede o comportamento padrão do link
+
+    const targetId = e.currentTarget.getAttribute('href'); // Obtém o ID do alvo do link
+    if (targetId) {
+        scrollToSection(targetId.slice(1)); // Remove o "#" do início do ID
+    }
+}
+
+function scrollToSection(sectionId: string) {
+  const targetElement = document.getElementById(sectionId);
+
+  if (targetElement) {
+    const headerHeight = document.querySelector('.header')?.getBoundingClientRect().height || 0;
+    let targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - headerHeight;
+    targetPosition -= 140;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: 'smooth'
+    });
+  }
+}
 
   const dishes: menuProps[] = [
     { nome: 'Virado à Paulista - Segunda-feira', nameSection: 'Pratos do dia', id: 1, valor: `A partir de: R$ ${generateRandomPrice()}` },
@@ -95,8 +118,12 @@ export function App() {
         </div>
         <Dialog>
 
-<DialogTrigger>
-  <ShoppingBag className="size-6 2xl:size-9" />
+        <DialogTrigger>
+  <ShoppingBag
+    className={`size-6 2xl:size-9 ${
+      selectedDishes.length > 0 ? 'text-orange-600 transition duration-700' : ''
+    }`}
+  />
 </DialogTrigger>
   <DialogContent className="bg-zinc-950 w-full">
     <div className="justify-center items-center flex gap-6">
@@ -135,45 +162,52 @@ export function App() {
         </div>
     
       </div>
-      <a href="#" className="flex items-center justify-center bg-zinc-900 rounded h-7">
-        Continuar comprando
-      </a> 
+      {/* <button className="flex items-center justify-center bg-zinc-900 rounded h-7"
+      onClick={() => {
+        handleClose(); // Fecha o modal
+      }}
+      >
+  Continuar comprando
+      </button> */}
 
-      <a type='button' href='https://wa.me/11977468366' className="bg-green-500 rounded h-7 flex items-center justify-center">
+      <a type='button' href='https://wa.me/5511977468366' className="bg-green-500 rounded h-7 flex items-center justify-center hover:bg-green-600">
         Fazer pedido no WhatsApp
       </a>
   </DialogContent>
 </Dialog>
       </div>
       <div className='flex items-center py-3'>
-        <nav className='flex items-center gap-3 md:gap-5 xl:gap-7 2xl:gap-10'>
-          <NavLink href="#">Pratos do dia</NavLink>
-          <NavLink href="#">Pratos executivos</NavLink>
-          <NavLink href="#">Pratos especiais</NavLink>
-          <NavLink href="#">Hamburgueres & beirutes</NavLink>
-        </nav>
+      <nav className='flex items-center gap-3 md:gap-5 xl:gap-7 2xl:gap-10'>
+            {dishes
+              .filter((dish) => dish.nameSection !== null)
+              .map((dish) => (
+                <NavLink key={dish.id} href={`#${dish.nameSection.replace(/\s+/g, '-').toLowerCase()}`} onClick={handleNavLinkClick}>
+                  {dish.nameSection}
+                </NavLink>
+              ))}
+          </nav>
       </div>
     </div>
 
     <div className="mx-6 md:mx-10 pt-32 md:pt-40 xl:pt-44">
     {dishes
     .filter((dish) =>
-      searchText.trim() === '' ||
-      dish.nome.toLowerCase().includes(searchText.toLowerCase())
+        searchText.trim() === '' ||
+        dish.nome.toLowerCase().includes(searchText.toLowerCase())
     )
     .map((dish, index) => (
-      <div key={dish.id} className="pb-8">
-        {dish.nameSection && <h2 className="text-[17px] 2xl:text-2xl font-semibold w-full flex justify-center md:justify-start pb-2">{dish.nameSection}</h2>}
-        {index !== 0 && dish.nameSection && <Separator className="bg-white/10 mb-5"/>}
-        <button
-        type="button"
-        onClick={() => addToBag(dish)}
-        className="border border-white/10 w-72 h-28 py-3 px-5 rounded-lg"
-        >
-        <h3 className="text-sm 2xl:text-xl opacity-50 pb-3">{dish.nome}</h3>
-        <p className="2xl:text-[22px]">{dish.valor}</p>
-        </button>
-      </div>
+        <div key={dish.id} id={dish.nameSection ? dish.nameSection.replace(/\s+/g, '-').toLowerCase() : ''} className="prato pb-8">
+            {dish.nameSection && <h2 className="text-[17px] 2xl:text-2xl font-semibold w-full flex justify-center md:justify-start pb-2">{dish.nameSection}</h2>}
+            {index !== 0 && dish.nameSection && <Separator className="bg-white/10 mb-5" />}
+            <button
+                type="button"
+                onClick={() => addToBag(dish)}
+                className="border border-white/10 w-72 h-28 py-3 px-5 rounded-lg hover:bg-zinc-900 hover:transition duration-700 ease-in-out"
+            >
+                <h3 className="text-sm 2xl:text-xl opacity-50 pb-3">{dish.nome}</h3>
+                <p className="2xl:text-[22px]">{dish.valor}</p>
+            </button>
+        </div>
     ))}
     </div>
        <Footer />
