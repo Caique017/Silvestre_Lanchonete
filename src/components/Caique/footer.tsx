@@ -1,4 +1,4 @@
-import Icon from '../assets/icon.svg'
+import Icon from '../../assets/icon.svg'
 
 export function Footer () {
   return (

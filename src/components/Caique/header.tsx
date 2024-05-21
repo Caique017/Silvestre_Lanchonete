@@ -5,6 +5,7 @@ import { Toaster, toast } from "sonner";
 import { dishes } from './menu';
 import { DialogMenu } from "./dialog-menu";
 import { Main } from "./main";
+import { useNavigate } from "react-router-dom";
 
 interface MenuProps {
   nome: string,
@@ -19,6 +20,12 @@ export function Header () {
   const [selectedDishes, setSelectedDishes] = useState<MenuProps[]>([]);
 
   const [totalPrice, setTotalPrice] = useState<number>(0);
+
+  const navigate = useNavigate();
+
+  const handleNavigateHome = () => {
+    navigate('/');
+  };
 
   function handleNavLinkClick(e: React.MouseEvent<HTMLAnchorElement>) { // evento  de clique em um elemento âncora <a> ou no nosso caso aqui <NavLink> .
     e.preventDefault();
@@ -70,7 +77,7 @@ export function Header () {
       <Toaster position='top-right' />
         <div className='fixed z-10 border border-white/10 bg-zinc-900 pl-4 md:pl-12 xl:pl-16 w-full flex flex-col gap-3'>
               <div className="flex mt-6 gap-7 md:gap-36 xl:gap-40 2xl:gap-80 items-center">
-                <a href="#" className="text-zinc-50 font-bold text-sm md:text-xl xl:text-2xl 2xl:text-3xl">Silvestre Lanchonete</a>
+                <button onClick={handleNavigateHome} className="text-zinc-50 font-bold text-sm md:text-xl xl:text-2xl 2xl:text-3xl">Silvestre Lanchonete</button>
                 <div className="px-3 md:w-60 xl:w-64 2xl:w-96 py-1 2xl:py-2 md:ml-40 xl:ml-72 border xl:mt-2 border-white/10 rounded-lg flex items-center gap-3 2xl:gap-6">
                   <Search className='size-3 xl:size-4 2xl:size-5 text-orange-600' />
                   <input

@@ -17,7 +17,7 @@ interface MainProps {
 export function Main ({ searchText, addToBag }: MainProps) {
   
   return (
-    <div className="mx-auto md:mx-10 pt-32 md:pt-40 xl:pt-44">
+    <div className="mx-10 pt-32 md:pt-40 xl:pt-44">
       {/*Filtra os pratos com base no texto de pesquisa e renderiza cada prato filtrado */}
     {dishes
     .filter((dish) => // Mantém o prato se o texto de pesquisa estiver vazio ou se o nome do prato contiver o texto de pesquisa
