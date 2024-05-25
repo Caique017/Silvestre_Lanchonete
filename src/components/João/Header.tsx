@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
-export function Header () {
-
-  const navigate = useNavigate();
+export function Header() {
+  const navigate = useNavigate()
 
   const handleNavigateHome = () => {
-    navigate('/about');
-  };
+    navigate('/menu')
+  }
   return (
-    <div className='border flex flex-col items-center space-y-5 py-4 border-white/10 bg-zinc-900'>
-      <h1 className="text-xl font-bold">Silvestre Lanchonete</h1>
-      <button onClick={handleNavigateHome} className="border text-zinc-300 border-white/10 h-10 w-44 rounded-md hover:bg-orange-50 hover:transition duration-500 ease-in-out">
+    <div className="flex flex-col items-center space-y-5 border border-white/10 bg-zinc-900 py-4">
+      <h1 className="text-xl font-bold 2xl:text-3xl">Silvestre Lanchonete</h1>
+      <button
+        onClick={handleNavigateHome}
+        className="h-10 w-44 rounded-md border border-white/10 text-zinc-300 duration-500 ease-in-out hover:bg-orange-50 hover:transition 2xl:h-14 2xl:w-52 2xl:text-lg"
+      >
         Acesse nosso cardápio
       </button>
     </div>

@@ -1,14 +1,16 @@
-import { ComponentProps } from "react";
+import { ComponentProps } from 'react'
 
 interface PropsNavLink extends ComponentProps<'a'> {
-  children: string;
+  children: string
 }
 
-export function NavLink (props: PropsNavLink) {
-
+export function NavLink(props: PropsNavLink) {
   return (
-    <a {...props} className='font-medium text-[9.5px] md:text-sm 2xl:text-lg transition duration-500 hover:text-orange-500 selection:text-orange-500'>
+    <a
+      {...props}
+      className="text-[9.5px] font-medium transition duration-500 selection:text-orange-500 hover:text-orange-500 md:text-sm 2xl:text-lg"
+    >
       {props.children}
     </a>
-  );
+  )
 }
