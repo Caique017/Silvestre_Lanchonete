@@ -84,14 +84,14 @@ export function Header() {
     <div>
       <Toaster position="top-right" />
       <div className="fixed z-10 flex w-full flex-col gap-3 border border-white/10 bg-zinc-900 pl-4 md:pl-12 xl:pl-16">
-        <div className="mt-6 flex items-center gap-7 md:gap-36 xl:gap-40 2xl:gap-80">
+        <div className="mt-6 flex items-center gap-7 md:gap-20 lg:gap-36 xl:gap-40 2xl:gap-80">
           <button
             onClick={handleNavigateHome}
-            className="text-sm font-bold text-zinc-50 md:text-xl xl:text-2xl 2xl:text-3xl"
+            className="text-sm font-bold text-zinc-50 transition duration-300 hover:text-orange-500 md:text-xl xl:text-2xl 2xl:text-3xl"
           >
             Silvestre Lanchonete
           </button>
-          <div className="flex items-center gap-3 rounded-lg border border-white/10 px-3 py-1 md:ml-40 md:w-60 xl:ml-72 xl:mt-2 xl:w-64 2xl:w-96 2xl:gap-6 2xl:py-2">
+          <div className="flex items-center gap-3 rounded-lg border border-white/10 px-3 py-1 md:ml-20 md:w-60 lg:ml-40 xl:ml-72 xl:mt-2 xl:w-64 2xl:w-96 2xl:gap-6 2xl:py-2">
             <Search className="size-3 text-orange-600 xl:size-4 2xl:size-5" />
             <input
               value={searchText}
@@ -108,7 +108,7 @@ export function Header() {
           />
         </div>
         <div className="flex items-center py-3">
-          <nav className="flex items-center gap-3 md:gap-5 xl:gap-7 2xl:gap-10">
+          <nav className="mx-3 flex items-center md:gap-5 xl:gap-7 2xl:gap-10">
             {dishes
               .filter((dish) => dish.nameSection !== null) // filtro de pratos para todos que tem um nameSection (nome da sessão) não nulo.
               .map(
