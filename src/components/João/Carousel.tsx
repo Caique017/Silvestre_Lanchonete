@@ -3,7 +3,11 @@ import ViradoPaulista from '../../assets/virado.png'
 import BifeRole from '../../assets/bife.png'
 import Feijoada from '../../assets/feijuca.png'
 import Funcionamento from '../../assets/funcionamento.png'
-import { Carousel, CarouselContent, CarouselItem } from '../Caique/ui/carousel'
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from '../../components/Caique/ui/carousel'
 
 const ControlledCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0)

@@ -1,4 +1,4 @@
-import { Search } from 'lucide-react'
+import { CircleUserRound, Menu, Search } from 'lucide-react'
 import { useState, Fragment } from 'react'
 import { NavLink } from './nav-link'
 import { Toaster, toast } from 'sonner'
@@ -6,6 +6,18 @@ import { dishes } from './menu'
 import { DialogMenu } from './dialog-menu'
 import { Main } from './main'
 import { useNavigate } from 'react-router-dom'
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from './ui/sheet'
+import { useAuth0 } from '@auth0/auth0-react'
+import MobileNavLinks from '../João/mobile-nav-links'
+import { Button } from '../ui/button'
+import { Separator } from '../ui/separator'
 
 interface MenuProps {
   nome: string
@@ -15,6 +27,8 @@ interface MenuProps {
 }
 
 export function Header() {
+  const { isAuthenticated, loginWithRedirect, user } = useAuth0()
+
   const [searchText, setSearchText] = useState('')
 
   const [selectedDishes, setSelectedDishes] = useState<MenuProps[]>([])
@@ -83,8 +97,8 @@ export function Header() {
   return (
     <div>
       <Toaster position="top-right" />
-      <div className="fixed z-10 flex w-full flex-col gap-3 border border-white/10 bg-zinc-900 pl-4 md:pl-12 xl:pl-16">
-        <div className="mt-6 flex items-center gap-7 md:gap-20 lg:gap-36 xl:gap-40 2xl:gap-80">
+      <div className="fixed z-10 flex w-full flex-col  gap-3 border border-white/10 bg-zinc-900 pl-4 md:pl-12 xl:pl-16">
+        <div className="md:gap-auto mt-6 flex items-center justify-evenly gap-5">
           <button
             onClick={handleNavigateHome}
             className="text-sm font-bold text-zinc-50 transition duration-300 hover:text-orange-500 md:text-xl xl:text-2xl 2xl:text-3xl"
@@ -100,15 +114,71 @@ export function Header() {
               placeholder="busca..."
             />
           </div>
-          <DialogMenu
-            selectedDishes={selectedDishes}
-            removeFromBag={removeFromBag}
-            totalPrice={totalPrice}
-            formatarPedido={formatarPedido}
-          />
+          <>
+            <Sheet>
+              <SheetTrigger>
+                <Menu className="text-orange-500" />
+              </SheetTrigger>
+              <SheetContent className="space-y-3 border-white/10 bg-zinc-900">
+                <SheetHeader>
+                  <SheetTitle>
+                    {isAuthenticated ? (
+                      <div className="space-y-3">
+                        <span className="flex items-center gap-2 font-bold text-zinc-50">
+                          <CircleUserRound className="text-orange-500" />
+                          {user?.name}
+                        </span>
+
+                        <Separator className="bg-zinc-800" />
+                      </div>
+                    ) : (
+                      <div className="space-y-3">
+                        <span className="text-base font-bold text-zinc-50">
+                          {' '}
+                          Bem vindo a Silvestre Lanchonete!
+                        </span>
+                        <Separator className="bg-zinc-800" />
+                      </div>
+                    )}
+                  </SheetTitle>
+                  <SheetDescription className="flex flex-col gap-4">
+                    {isAuthenticated ? (
+                      <div className="space-y-5">
+                        <div className="mt-3 flex flex-row-reverse">
+                          <DialogMenu
+                            selectedDishes={selectedDishes}
+                            removeFromBag={removeFromBag}
+                            totalPrice={totalPrice}
+                            formatarPedido={formatarPedido}
+                          />
+                        </div>
+                        <div className="w-full space-y-3">
+                          <MobileNavLinks
+                            isLogout={true}
+                            showMenuButton={false}
+                          />
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="space-y-5">
+                        <Button
+                          onClick={() => loginWithRedirect()}
+                          className="mt-2 w-full bg-slate-900 font-bold"
+                        >
+                          Log In
+                        </Button>
+                      </div>
+                    )}
+                  </SheetDescription>
+                </SheetHeader>
+              </SheetContent>
+            </Sheet>
+          </>
+
+          <div></div>
         </div>
-        <div className="flex items-center py-3">
-          <nav className="mx-3 flex items-center md:gap-5 xl:gap-7 2xl:gap-10">
+        <div className="flex items-center py-3 lg:justify-center">
+          <nav className=" flex items-center space-x-3 md:gap-5 xl:gap-7 2xl:gap-10">
             {dishes
               .filter((dish) => dish.nameSection !== null) // filtro de pratos para todos que tem um nameSection (nome da sessão) não nulo.
               .map(

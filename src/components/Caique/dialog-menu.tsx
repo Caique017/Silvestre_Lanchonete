@@ -1,6 +1,6 @@
 import { ShoppingBag, Trash } from 'lucide-react'
 import { Dialog, DialogContent, DialogTrigger } from './ui/dialog'
-import { Separator } from './ui/separator'
+import { Separator } from '../ui/separator'
 import { toast } from 'sonner'
 
 interface MenuProps {

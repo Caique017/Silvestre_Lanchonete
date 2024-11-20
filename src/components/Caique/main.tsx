@@ -1,5 +1,5 @@
 import { dishes } from './menu'
-import { Separator } from './ui/separator'
+import { Separator } from '../ui/separator'
 
 interface MenuProps {
   nome: string
@@ -50,12 +50,21 @@ export function Main({ searchText, addToBag }: MainProps) {
             <button
               type="button"
               onClick={() => addToBag(dish)}
-              className="h-28 w-72 rounded-lg border border-white/10 px-5 py-3 duration-700 ease-in-out hover:bg-zinc-900 hover:transition 2xl:h-40 2xl:w-96"
+              className="flex w-full items-center rounded-lg border border-white/10 p-4 duration-700 ease-in-out hover:bg-zinc-900 hover:transition sm:w-96"
             >
-              <h3 className="pb-3 text-sm opacity-50 2xl:text-xl">
-                {dish.nome}
-              </h3>
-              <p className="2xl:text-[22px]">{dish.valor}</p>
+              <div className="h-20 w-32 flex-shrink-0 overflow-hidden rounded-lg sm:h-24 sm:w-36">
+                <img
+                  src={dish.imageSrc}
+                  alt={dish.nome}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="ml-4 flex flex-col justify-center space-y-2 text-left sm:space-y-4">
+                <h3 className="text-sm font-semibold text-white sm:text-base">
+                  {dish.nome}
+                </h3>
+                <p className="text-xs text-gray-400 sm:text-sm">{dish.valor}</p>
+              </div>
             </button>
           </div>
         ))}
