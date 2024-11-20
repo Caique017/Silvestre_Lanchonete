@@ -25,7 +25,7 @@ Seleção de Bebidas: Além dos pratos principais, o cliente pode selecionar div
 Funcionalidades de Busca e Seleção
 Busca de Pratos: O sistema inclui uma funcionalidade de busca que permite aos clientes procurar por pratos específicos, agilizando o processo de encontrar exatamente o que desejam.
 
-Adicionar à Sacola: Uma vez encontrado o prato ou bebida desejado, o cliente pode adicioná-lo à sua sacola de compras com um único clique.
+Adicionar à sacola: Uma vez encontrado o prato ou bebida desejado, o cliente pode adicioná-lo à sua sacola de compras com um único clique.
 
 Envio de Pedidos via WhatsApp: Após finalizar a seleção de itens, o cliente pode enviar o pedido diretamente para o WhatsApp da lanchonete, facilitando a comunicação e a confirmação do pedido.
 
