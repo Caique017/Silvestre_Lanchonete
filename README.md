@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./src/assets/icon.svg" alt="Logo" width="200"/>
+  <img src="public/assets/icon.svg" alt="Logo" width="200"/>
 </p>
 <h3 align="center">
 sistema de pedidos online
