@@ -1,4 +1,5 @@
-import Icon from '../../assets/icon.svg'
+// eslint-disable-next-line import/no-absolute-path
+import Icon from '/assets/icon.svg'
 
 export function Footer() {
   return (

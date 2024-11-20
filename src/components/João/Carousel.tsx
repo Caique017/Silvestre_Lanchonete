@@ -1,8 +1,12 @@
 import { useState } from 'react'
-import ViradoPaulista from '../../assets/virado.png'
-import BifeRole from '../../assets/bife.png'
-import Feijoada from '../../assets/feijuca.png'
-import Funcionamento from '../../assets/funcionamento.png'
+// eslint-disable-next-line import/no-absolute-path
+import ViradoPaulista from '/assets/virado.png'
+// eslint-disable-next-line import/no-absolute-path
+import BifeRole from '/assets/bife.png'
+// eslint-disable-next-line import/no-absolute-path
+import Feijoada from '/assets/feijuca.png'
+// eslint-disable-next-line import/no-absolute-path
+import Funcionamento from '/assets/funcionamento.png'
 import {
   Carousel,
   CarouselContent,

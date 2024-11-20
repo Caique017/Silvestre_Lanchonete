@@ -1,5 +1,7 @@
-import whats from '../../assets/whats.png'
-import insta from '../../assets/insta.png'
+// eslint-disable-next-line import/no-absolute-path
+import whats from '/assets/whats.png'
+// eslint-disable-next-line import/no-absolute-path
+import insta from '/assets/insta.png'
 
 function ContatoLocal() {
   return (

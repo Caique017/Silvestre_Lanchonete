@@ -23,7 +23,7 @@ const MobileNavLinks: React.FC<MobileNavLinksProps> = ({
       {showMenuButton && (
         <button
           onClick={handleNavigateHome}
-          className="h-10 w-full rounded-md border border-white/10 bg-orange-500 font-bold text-white duration-500 ease-in-out hover:bg-orange-50 hover:transition 2xl:h-14 2xl:w-52 2xl:text-lg"
+          className="h-10 w-full rounded-md border border-white/10 bg-orange-500 font-bold text-white duration-500 ease-in-out hover:bg-orange-50 hover:transition"
         >
           Cardápio
         </button>

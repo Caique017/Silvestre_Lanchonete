@@ -1,6 +1,8 @@
-import Banner from '../../assets/banner_silvestre_lanchonete.png'
+// eslint-disable-next-line import/no-absolute-path
+import Banner from '/assets/banner_silvestre_lanchonete.png'
 // eslint-disable-next-line camelcase
-import Banner_Cel from '../../assets/banner_silvestre_cel.png'
+// eslint-disable-next-line camelcase, import/no-absolute-path
+import banner_cel from '/assets/banner_silvestre_cel.png'
 import Carousel from './Carousel'
 import { Header } from './Header'
 import ContatoLocal from './Contato_Local'
@@ -14,7 +16,7 @@ export function Home() {
         <img
           className="block h-auto w-full md:hidden"
           // eslint-disable-next-line camelcase
-          src={Banner_Cel}
+          src={banner_cel}
           alt="Banner_cel"
         />
         <img

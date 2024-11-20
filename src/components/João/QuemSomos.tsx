@@ -1,4 +1,5 @@
-import Logo from '../../assets/logo fundo.png'
+// eslint-disable-next-line import/no-absolute-path
+import Logo from '/assets/logo fundo.png'
 
 function QuemSomos() {
   return (

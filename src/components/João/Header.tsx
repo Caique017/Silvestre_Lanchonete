@@ -1,5 +1,6 @@
 import MobileNav from './mobile-nav'
-import Logo from '../../assets/Logo.png'
+// eslint-disable-next-line import/no-absolute-path
+import Logo from '/assets/Logo.png'
 
 export function Header() {
   return (
